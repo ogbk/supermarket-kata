@@ -30,7 +30,7 @@ const App = () => {
     <div className="app">
       <div className="app-config">
         ACTION:
-        <select className="click" value="123456">
+        <select className="select-custom click" value="123456">
           <option value="11">CREATE NEW ITEM</option>
           <option value="11">UPDATE - 11</option>
           <option value="12">UPDATE - 22</option>
@@ -38,9 +38,10 @@ const App = () => {
         </select>
       </div>
       <div className="app-view">
-        {configOpen
-          ? <Config />
-          : <Cart />
+        {
+          configOpen
+            ? <Config />
+            : <Cart />
         }
         <Receipt />
       </div>

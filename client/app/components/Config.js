@@ -1,14 +1,17 @@
 // @flow
 
 import React, { useEffect, useState } from 'react';
-// import { computeTotal } from '../util/functions';
-// import type { CartType } from '../util/datatypes';
 import { getOnlyNumber } from '../util/functions';
+import type {
+  DiscountType, ItemType, ProductsType, StoreType,
+} from '../util/datatypes';
 
 type Props = {
+  store: StoreType,
+  dispatch: any,
 }
 
-const Config = ({ }: Props) => {
+const Config = ({ store, dispatch }: Props) => {
   const [pricingMethod, setPricingMethod] = useState('PRICE_PER_ITEM');
   const [suffix, setSuffix] = useState('item');
   const [price, setPrice] = useState(0);
@@ -103,12 +106,22 @@ const Config = ({ }: Props) => {
         <button
           type="button"
           className="click button config-abort"
+          onClick={() => {
+            dispatch({
+              type: 'CLOSE_CONFIG',
+            });
+          }}
         > ABORT
         </button>
 
         <button
           type="button"
           className="click button config-save"
+          onClick={() => {
+            dispatch({
+              type: 'CLOSE_CONFIG',
+            });
+          }}
         > SAVE
         </button>
       </div>

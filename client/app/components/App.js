@@ -5,26 +5,15 @@ import Cart from './Cart';
 import Config from './Config';
 import Receipt from './Receipt';
 
-// import { initialState, reducer } from '../util/reducer';
-// import type { ProductTypes_temp } from '../util/datatypes';
+import type { DiscountType, ItemType, ProductsType } from '../util/datatypes';
+import { initialState, reducer } from '../util/reducer';
 
 const App = () => {
-  const [configOpen, setConfigOpen] = useState(false);
-  // const NO_ERROR: string = '';
+  const [store, dispatch] = useReducer(reducer, initialState);
 
-  // const [store, dispatch] = useReducer(reducer, initialState);
-
-
-
-/*
   const {
-    products,
-    cart,
-    currentPage,
-    selectedProductId,
-    selectedProductType,
+    configOpen,
   } = store;
-*/
 
   return (
     <div className="app">
@@ -40,10 +29,10 @@ const App = () => {
       <div className="app-view">
         {
           configOpen
-            ? <Config />
-            : <Cart />
+            ? <Config store={store} dispatch={dispatch} />
+            : <Cart store={store} dispatch={dispatch} />
         }
-        <Receipt />
+        <Receipt store={store} />
       </div>
     </div>
   );

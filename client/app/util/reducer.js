@@ -3,65 +3,53 @@
 import type { StoreType } from './datatypes';
 import { getItemCartIndexById, findProduct, updateCartQuantity } from './reducerHelper';
 
-const initialState: StoreType = {
-  'cart': [],
-  'products': {
-    'Heroes': [],
-    'Sharps': [],
-    'Polos': [],
+const defaultDiscount: DiscountType = {
+  discountMethod: 'DISCOUNT_PER_FRACTION',
+  discountBuy: 2,
+  discountPay: 1,
+  discountQuantity: 0,
+  reducedPrice: 0,
+  remainingQuantity: 0,
+  remainingPrice: 0,
+}
+
+const defaultItem: ItemType = {
+  id: '',
+  name: '',
+  suffix: '',
+  quantity: 1,
+  price: 1,
+  pricingMethod: 'PRICE_PER_ITEM',
+  hasDiscount: true,
+  discountDetails: defaultDiscount,
+  fullPrice: 0,
+  actualPrice: 0,
+  savings: 0,
+  tempData: {
+    addQuantity: 1,
+    deleteQuantity: 1,
   },
-  'currentPage': 'PRODUCTS_LIST',
-  'selectedProductId': '',
-  'selectedProductType': '',
+};
+
+const initialState = {
+  products: [],
+  configOpen: true,
 };
 
 const reducer = (state: StoreType, action: any) => {
   switch (action.type) {
-    case 'SET_PRODUCTS': {
+    case 'OPEN_CONFIG': {
       return {
         ...state,
-        'products': action.newProducts,
+        'configOpen': true,
       };
     }
 
-    case 'SET_PAGE': {
-      if (action.page !== 'PRODUCT') {
-        return {
-          ...state,
-          'currentPage': action.page,
-        };
-      }
+    case 'CLOSE_CONFIG': {
       return {
         ...state,
-        'currentPage': action.page,
-        'selectedProductId': action.productId,
-        'selectedProductType': action.productType,
+        'configOpen': false,
       };
-    }
-
-    case 'DELETE': {
-      const newState = { ...state };
-      const foundIndex = getItemCartIndexById(newState, action.productId);
-      newState.cart.splice(foundIndex, 1);
-      return newState;
-    }
-
-    case 'ADD': {
-      const foundIndex = getItemCartIndexById(state, action.productId);
-      if (foundIndex >= 0) {
-        return (
-          updateCartQuantity(state, foundIndex, action.quantity, true)
-        );
-      }
-
-      const foundProduct = findProduct(state, action.productType, action.productId);
-      const newState = { ...state };
-      newState.cart.push({
-        ...foundProduct,
-        quantity: action.quantity,
-      });
-
-      return newState;
     }
 
     default: {

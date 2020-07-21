@@ -1,48 +1,34 @@
 // @flow
 
-export type Product = {
+export type DiscountType = {
+  discountMethod: 'DISCOUNT_PER_FRACTION' | 'DISCOUNT_PER_QUANTITY',
+  discountBuy: number,
+  discountPay: number,
+  discountQuantity: number,
+  reducedPrice: number,
+  remainingQuantity: number,
+  remainingPrice: number,
+}
+
+export type ItemType = {
   id: string,
-  price: number,
-  images: Array<string>,
-  productType: string,
-  title: string,
-  tags: Array<string>,
-  updatedAt: string,
-};
-
-export type ProductList = Array<Product>;
-
-export type ProductTypes_temp = {
-  'Heroes': ProductList,
-  'Sharps': ProductList,
-  'Polo': ProductList
-};
-
-export type ProductTypes = {
-  'Heroes': ProductList,
-  'Sharps': ProductList,
-  'Polos': ProductList
-};
-
-export type CartItem = {
-  id: string,
-  price: number,
-  images: Array<string>,
-  productType: string,
-  title: string,
-  tags: Array<string>,
-  updatedAt: string,
+  name: string,
+  suffix: string,
   quantity: number,
+  price: number,
+  pricingMethod: 'PRICE_PER_ITEM' | 'PRICE_PER_WEIGHT',
+  hasDiscount: boolean,
+  discountDetails: DiscountType,
+  fullPrice: number,
+  actualPrice: number,
+  savings: number,
+  tempData: {
+    addQuantity: number,
+    deleteQuantity: number,
+  }
 };
-
-export type CartType = Array<CartItem>;
-
-type PageType = 'PRODUCTS_LIST' | 'PRODUCT' | 'CART';
 
 export type StoreType = {
-  cart: CartType,
-  products: ProductTypes,
-  currentPage: PageType,
-  selectedProductId: string,
-  selectedProductType: string,
+  products: Array<ItemType>,
+  configOpen: boolean,
 };

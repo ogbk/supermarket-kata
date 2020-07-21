@@ -71,7 +71,7 @@
 - Weight is shown in gr (grams not kilograms) everywhere except in receipt. This way users won't have to do much conversions.
 
 ## Coding techniques / styles
-
+- In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`
 
 ## Running
 

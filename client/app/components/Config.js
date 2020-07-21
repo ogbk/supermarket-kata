@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 // import { computeTotal } from '../util/functions';
 // import type { CartType } from '../util/datatypes';
+import { getOnlyNumber } from '../util/functions';
 
 type Props = {
 }
@@ -10,6 +11,9 @@ type Props = {
 const Config = ({ }: Props) => {
   const [pricingMethod, setPricingMethod] = useState('PRICE_PER_ITEM');
   const [suffix, setSuffix] = useState('item');
+  const [price, setPrice] = useState(0);
+  const [name, setName] = useState('');
+
   const [hasDiscount, setHasDiscount] = useState('true');
   const [discountMethod, setDiscountMethod] = useState('DISCOUNT_PER_FRACTION');
 
@@ -21,15 +25,21 @@ const Config = ({ }: Props) => {
       <span className="title">CONFIG</span>
       <div className="content">
         <span>PRODUCT NAME:</span>
-        <input type="text" className="input-text config-field" /><br /><br />
+        <input
+          type="text"
+          value={name}
+          className="input-text config-field"
+          onChange={({ target: { value } }) => { setName(value); }}
+        /><br /><br />
+
         <span>PRICING METHOD:</span>
         <select
           value={pricingMethod}
           className="select-custom click config-select config-field"
-          onChange={(evt) => {
-            setPricingMethod(evt.target.value);
+          onChange={({ target: { value } }) => {
+            setPricingMethod(value);
             setSuffix(
-              evt.target.value === 'PRICE_PER_ITEM' ? 'item' : 'gr',
+              value === 'PRICE_PER_ITEM' ? 'item' : 'gr',
             );
           }}
         >
@@ -37,14 +47,19 @@ const Config = ({ }: Props) => {
           <option value="PRICE_PER_WEIGHT">PRICE PER WEIGHT</option>
         </select><br /><br />
         <span>PRICE:</span>
-        <input type="text" className="input-text config-field" /><span>/{suffix}</span>
+        <input
+          type="text"
+          value={price}
+          className="input-text config-field"
+          onChange={({ target: { value } }) => { setPrice(getOnlyNumber(value)); }}
+        /><span>/{suffix}</span>
         <br /><br /><br /><br />
 
         <span>DISCOUNT:</span>
         <select
           value={hasDiscount}
           className="select-custom click config-select config-field"
-          onChange={(evt) => { setHasDiscount(evt.target.value); }}
+          onChange={({ target: { value } }) => { setHasDiscount(value); }}
         >
           <option value="false">NO</option>
           <option value="true">YES</option>
@@ -56,7 +71,7 @@ const Config = ({ }: Props) => {
             <select
               value={discountMethod}
               className="select-custom click config-select config-field"
-              onChange={(evt) => { setDiscountMethod(evt.target.value); }}
+              onChange={({ target: { value } }) => { setDiscountMethod(value); }}
             >
               <option value="DISCOUNT_PER_FRACTION">DISCOUNT PER FRACTION</option>
               <option value="DISCOUNT_PER_QUANTITY">DISCOUNT PER QUANTITY</option>
@@ -68,7 +83,7 @@ const Config = ({ }: Props) => {
               type="text"
               value={discountBuy}
               className="input-text config-field"
-              onChange={(evt) => { setDiscountBuy(evt.target.value); }}
+              onChange={({ target: { value } }) => { setDiscountBuy(value); }}
             />
             {suffix === 'gr' && suffix}<br /><br />
 
@@ -77,7 +92,7 @@ const Config = ({ }: Props) => {
               type="text"
               value={discountPay}
               className="input-text config-field"
-              onChange={(evt) => { setDiscountPay(evt.target.value); }}
+              onChange={({ target: { value } }) => { setDiscountPay(value); }}
             />
             {discountMethod === 'DISCOUNT_PER_QUANTITY' ? '£' : 'item(s)'}
           </div>

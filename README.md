@@ -31,6 +31,8 @@
     - Total to pay: [Subtotal - total savings]
 
   - component `<Config />`: interface where business executive can store/update a particular product with their details. Products are stored/updated one at at time.
+
+  When open, the action button in `<App/>` is blocked, so user can't add another action to the one currently being handled.
   It shows:
     - product name
     - pricing method: [per weight or per item]

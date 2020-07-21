@@ -1,0 +1,144 @@
+// sass-lint:disable nesting-depth
+// sass-lint:disable no-vendor-prefixes
+
+$blue: #00f
+$grey: #808080
+$green: #008000
+$red: #f00
+$black: #000
+$yellow: #ff0
+$white: #fff
+$primary-color: #1d7874
+$brown: #964b00
+
+$hover-color: #0f0 // green INSTEAD OF orange #ffa500 
+$border-color: #999
+$clicked-row-color: #0f0 // green
+
+*
+  color: $black
+  font-size: 1em
+
+body
+  font-family: sans-serif, Consolas
+
+.click
+  cursor: pointer
+
+.is-new
+  color: $red
+
+.not-new
+  visibility: hidden
+
+.app
+  margin: 1em
+
+  .input-quantity
+    border: 0
+    border-bottom: 1px solid $primary-color
+    margin-left: 10px
+    width: 3em
+
+  .add-cart
+    background-color: $black
+    border: 0
+    color: $white
+
+  .delete-cart
+    background-color: $brown
+    border: 0
+    color: $white
+    margin-left: 2em
+
+  .page-header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 1em
+
+    .page-back,
+    .page-cart
+      width: 2.5em
+
+  .cart,
+  .product,
+  .products
+    width: 100%
+
+
+  .products
+    .products-header
+      margin-bottom: 2.5em
+
+      span
+        margin-right: 1em
+
+        &.selected-type
+          border-bottom: 1px solid $blue
+
+    .productslist-entry
+      display: flex
+      height: 180px
+
+      &.productslist-entry-cart
+        height: 90px
+
+      .image-container
+        margin-right: 15px
+        width: 120px
+
+        img
+          height: 150px
+          max-width: 120px
+
+          &.cart-image
+            height: 70px
+
+      .image-container-cart
+        margin-right: 5px
+        width: 80px
+
+        img
+          height: 150px
+          max-width: 80px
+
+          &.cart-image
+            height: 70px
+
+      .productslist-details
+        display: flex
+        flex-direction: column
+        font-size: 1.2em
+
+        div
+          margin-bottom: .5em
+
+          &.detail-add
+            button
+              margin-right: 1em
+
+  .product
+    .product-entry
+      display: flex
+      height: 400px
+
+      .image-container
+        margin-right: 15px
+        width: 300px
+
+        img
+          height: 400px
+          max-width: 300px
+
+      .product-details
+        display: flex
+        flex-direction: column
+        font-size: 2em
+
+        div
+          margin-bottom: .5em
+
+          &.detail-add
+            button
+              margin-right: 1em
+

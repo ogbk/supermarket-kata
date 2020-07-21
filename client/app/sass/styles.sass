@@ -25,6 +25,9 @@ body
 .click
   cursor: pointer
 
+.hide
+  visibility: hidden
+
 .button
   background-color: $white
   border: .2px solid $black
@@ -58,7 +61,7 @@ body
 
       .title
         border-bottom: 1px solid $black
-        color: $red
+        color: $brown
 
       .content
         margin-top: 1.8em
@@ -93,6 +96,16 @@ body
         textarea
           resize: none
 
+      .config-actions
+        margin-top: 3em
 
+        button
+          margin-right: 1.5em
+
+          &.config-abort
+            color: $red
+
+          &.config-save
+            color: $blue
 
 

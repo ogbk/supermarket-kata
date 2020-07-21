@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="app-config">
+      <div className={configOpen ? 'hide' : 'app-config'}>
         ACTION:
         <select className="select-custom click" value="123456">
           <option value="11">CREATE NEW ITEM</option>

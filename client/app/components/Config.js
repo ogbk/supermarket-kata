@@ -98,6 +98,20 @@ const Config = ({ }: Props) => {
           </div>
         )}
       </div>
+
+      <div className="config-actions">
+        <button
+          type="button"
+          className="click button config-abort"
+        > ABORT
+        </button>
+
+        <button
+          type="button"
+          className="click button config-save"
+        > SAVE
+        </button>
+      </div>
     </div>
   );
 };

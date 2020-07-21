@@ -1,7 +1,7 @@
 {
-   "name": "spoke-test",
+   "name": "supermarket-kata",
    "version": "1.0.0",
-   "description": "Spoke Test",
+   "description": "Supermarket Kata",
    "main": "index.js",
    "scripts": {
       "start": "webpack-dev-server -d --watch --hot --open",

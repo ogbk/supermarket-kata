@@ -7,13 +7,13 @@ import React, { useEffect, useState } from 'react';
 type Props = {
 }
 
-const Cart = ({ }: Props) => {
+const Receipt = ({ }: Props) => {
 
   return (
-    <div className="cart">
-      CART
+    <div className="receipt">
+      RECEIPT
     </div>
   );
 };
 
-export default Cart;
+export default Receipt;

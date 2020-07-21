@@ -11,7 +11,12 @@ const Receipt = ({ }: Props) => {
 
   return (
     <div className="receipt">
-      RECEIPT
+      <span className="title">RECEIPT</span>
+      <div className="content">
+        <textarea readOnly>
+          RECEIPT - CONTENT
+        </textarea>
+      </div>
     </div>
   );
 };

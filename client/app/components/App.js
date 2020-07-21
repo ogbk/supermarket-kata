@@ -28,11 +28,22 @@ const App = () => {
 
   return (
     <div className="app">
-      {configOpen
-        ? <Config/>
-        : <Cart/>
-      }
-      <Receipt/>
+      <div className="app-config">
+        ACTION:
+        <select className="click" value="123456">
+          <option value="11">CREATE NEW ITEM</option>
+          <option value="11">UPDATE - 11</option>
+          <option value="12">UPDATE - 22</option>
+          <option value="13">UPDATE - 33</option>
+        </select>
+      </div>
+      <div className="app-view">
+        {configOpen
+          ? <Config />
+          : <Cart />
+        }
+        <Receipt />
+      </div>
     </div>
   );
 };

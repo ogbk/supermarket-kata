@@ -11,7 +11,10 @@ const Cart = ({ }: Props) => {
 
   return (
     <div className="cart">
-      CART
+      <span className="title">CART</span>
+      <div className="content">
+        CART - CONTENT
+      </div>
     </div>
   );
 };

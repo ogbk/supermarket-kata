@@ -7,24 +7,55 @@ import Receipt from './Receipt';
 
 import type { DiscountType, ItemType, ProductsType } from '../util/datatypes';
 import { initialState, reducer } from '../util/reducer';
+import { findProductByName } from '../util/functions';
 
 const App = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
+  const [productName, setProductName] = useState('');
+
+  const executeAction = () => {
+    const foundProduct = findProductByName(store, productName);
+
+    if (foundProduct) {
+      dispatch({
+        type: 'UPDATE_ITEM',
+        product: foundProduct,
+      });
+    } else {
+      dispatch({
+        type: 'NEW_ITEM',
+      });
+    }
+  };
 
   const {
     configOpen,
+    products,
   } = store;
 
   return (
     <div className="app">
       <div className={configOpen ? 'hide' : 'app-config'}>
-        ACTION:
-        <select className="select-custom click" value="123456">
-          <option value="11">CREATE NEW ITEM</option>
-          <option value="11">UPDATE - 11</option>
-          <option value="12">UPDATE - 22</option>
-          <option value="13">UPDATE - 33</option>
+        SELECT ACTION:
+        <select
+          className="select-custom click"
+          value={productName}
+          onChange={({ target: { value } }) => { setProductName(value); }}
+        >
+          <option value="">CREATE NEW ITEM</option>
+          {
+            products.map(({ name }) => (
+              <option value={name}>UPDATE: {name}</option>
+            ))
+          }
         </select>
+        <button
+          type="button"
+          className="click button execute-action"
+          onClick={executeAction}
+        >
+          EXECUTE
+        </button>
       </div>
       <div className="app-view">
         {

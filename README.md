@@ -1,4 +1,4 @@
-# ________
+# Supermarket Kata test
 
 ## Tech stack
 
@@ -12,10 +12,53 @@
   - React Router - components were fairly simple, not too many pages to switch to
 
 ## App structure
+- base component: `<App/>` contains:
+  - component `<Cart/>`: shows all products registered in the business. 
+  User makes transactions on this interface. For each product it shows the following:
+    - name
+    - quantity purchased (number of items or weight)
+    - button `ADD`
+    - quantity to add (default 1)
+    - button `DELETE`
+    - quantity to delete (default 1)
 
+  - component `<Receipt/>`: real-time receipt of current user transation.
+    Modelled after receipt picture provided in test description.
+    It shows:
+    - Subtotal (total price of all items - without any discount)
+    - Savings: for each product with a discount, show the applied discount
+    - Total savings: sum of applied discounts for all products
+    - Total to pay: [Subtotal - total savings]
 
+  - component `<Config />`: interface where business executive can store/update a particular product with their details. Products are stored/updated one at at time.
+  It shows:
+    - product name
+    - pricing method: [per weight or per item]
+    - price
+    - discount details
+      - discount method: [reduction per price or per fraction]
+        - reduction per price [eg but 2 pay £1]
+        - reduction per fraction [eg but 3 pay 2]
+      - buyAmount: [eg in `but 2 pay £1` it's `2`]
+      - payAmount: [eg in `but 2 pay £1` it's `1`]
+    - button `SAVE`: save and close `<Config/>`
+   
+  - button `CONFIG`: open `<Config/>`
 
-## Component layout
+## Data structure
+- Besides the data format shown on the components, the following data is used in the state management:
+  - `productId`- item code for each product 
+  - `products[productId]`:
+      - Product info saved in `<Config/>` 
+      - `quantity` - [number or weight]
+      - `fullPrice`: price for `quantity` without any discount
+      - `discountQuantity`: number or weight to which discount will be applied on
+      - `reducedPrice`: price for `discountQuantity` when discount is applied
+      - `remainingQuantity`: number or weight to which discount is not applied on
+      - `remainingPrice`: price for `remainingQuantity` without discount
+      - `actualPrice`: what user actually pays [`reducedPrice + remainingPrice`] 
+      - `savings`: what user actually pays [`fullPrice` - (`reducedPrice + remainingPrice`) ]
+ 
 
 
 ## Coding techniques / styles

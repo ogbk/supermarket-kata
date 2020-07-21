@@ -75,6 +75,8 @@
 ## Coding techniques / styles
 - In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`
 
+- `products.data.tempData = {addQuantity, deleteQuantity}`: fields used in the state management to store added, deleted quantity in `<Cart/>`, related to a particular product.
+
 ## Running
 
 - If necessary, change the following default application port in `port_config.js`:

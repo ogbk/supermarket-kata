@@ -41,9 +41,16 @@
         - reduction per fraction [eg but 3 pay 2]
       - buyAmount: [eg in `but 2 pay £1` it's `2`]
       - payAmount: [eg in `but 2 pay £1` it's `1`]
+    - button `ABORT`: close `<Config/>`, don't save
     - button `SAVE`: save and close `<Config/>`
+      - Highights any error found:
+        - discount costs more than normal price
+    
    
-  - button `CONFIG`: open `<Config/>`
+  - button `ACTION`: open `<Config/>`. Select either:
+    - add new product with details
+    - update existing product
+   
 
 ## Data structure
 - Besides the data format shown on the components, the following data is used in the state management:

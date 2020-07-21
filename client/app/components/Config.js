@@ -51,7 +51,7 @@ const Config = ({ }: Props) => {
         </select><br /><br />
 
         { hasDiscount === 'true' && (
-          <div>
+          <div className="discount-optional">
             <span>DISCOUNT METHOD:</span>
             <select
               value={discountMethod}

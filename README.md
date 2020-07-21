@@ -65,8 +65,10 @@
       - `remainingPrice`: price for `remainingQuantity` without discount
       - `actualPrice`: what user actually pays [`reducedPrice + remainingPrice`] 
       - `savings`: what user actually pays [`fullPrice` - (`reducedPrice + remainingPrice`) ]
+      - `suffix`: value to express quantity of items: `gr` or `item(s)`
  
-
+## Business considerations
+- Weight is shown in gr (grams not kilograms) everywhere except in receipt. This way users won't have to do much conversions.
 
 ## Coding techniques / styles
 

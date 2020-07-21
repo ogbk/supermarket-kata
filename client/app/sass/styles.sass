@@ -25,6 +25,17 @@ body
 .click
   cursor: pointer
 
+.button
+  background-color: $white
+  border: .2px solid $black
+  margin-right: 6px
+
+.input-text
+  border: 0
+  border-bottom: .1px solid $black
+  font-family: monospace, Lucinda Console, sans-serif, Courier New
+  width: 4em
+
 .app
   margin: 1em
 
@@ -41,10 +52,29 @@ body
 
     div
       flex-grow: 1
-      span.title
+
+      .title
         border-bottom: 1px solid $black
+
       .content
-        margin-top: 1em
+        margin-top: 1.8em
+
+        .cart-item
+          margin-bottom: 2em
+
+          .cart-item-actions
+            display: flex
+            margin-top: .3em
+
+            div
+              flex-grow: 1
+              max-width: 11em
+
+              .button-add
+                color: $blue
+
+              .button-delete
+                color: $red
 
 
 

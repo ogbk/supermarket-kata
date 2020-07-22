@@ -85,6 +85,13 @@ const reducer = (state: StoreType, action: any) => {
       };
     }
 
+    case 'REPLACE_PRODUCTS': {
+      return {
+        ...state,
+        'products': action.products,
+      };
+    }
+
     default: {
       return state;
     }

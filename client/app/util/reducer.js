@@ -1,17 +1,18 @@
 // @flow
 
-import type { StoreType } from './datatypes';
+import type { DiscountType, ItemType, StoreType } from './datatypes';
+import { getOnlyNumber, updateProductByName } from '../util/functions';
 import { getItemCartIndexById, findProduct, updateCartQuantity } from './reducerHelper';
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',
-  discountBuy: 2,
+  discountBuy: 1,
   discountPay: 1,
   discountQuantity: 0,
   reducedPrice: 0,
   remainingQuantity: 0,
   remainingPrice: 0,
-}
+};
 
 const defaultItem: ItemType = {
   id: '',
@@ -20,7 +21,7 @@ const defaultItem: ItemType = {
   quantity: 1,
   price: 1,
   pricingMethod: 'PRICE_PER_ITEM',
-  hasDiscount: true,
+  hasDiscount: 'true',
   discountDetails: defaultDiscount,
   fullPrice: 0,
   actualPrice: 0,
@@ -33,22 +34,54 @@ const defaultItem: ItemType = {
 
 const initialState = {
   products: [],
-  configOpen: true,
+  configOpen: false,
+  configNew: false,
+  currentProduct: defaultItem,
 };
 
 const reducer = (state: StoreType, action: any) => {
   switch (action.type) {
-    case 'OPEN_CONFIG': {
+    case 'NEW_ITEM': {
       return {
         ...state,
         'configOpen': true,
+        'configNew': true,
       };
     }
 
-    case 'CLOSE_CONFIG': {
+    case 'UPDATE_ITEM': {
+      return {
+        ...state,
+        'configOpen': true,
+        'configNew': false,
+        'currentProduct': action.product,
+      };
+    }
+
+    case 'ABORT_CONFIG': {
       return {
         ...state,
         'configOpen': false,
+      };
+    }
+
+    case 'SAVE_NEW': {
+      return {
+        ...state,
+        products: [
+          ...state.products,
+          action.product,
+        ],
+        'configOpen': false,
+      };
+    }
+
+    case 'SAVE_UPDATED': {
+      const updatedStore = updateProductByName(state, action.product);
+      return {
+        ...updatedStore,
+        'configOpen': false,
+        'currentProduct': action.product,
       };
     }
 
@@ -58,4 +91,4 @@ const reducer = (state: StoreType, action: any) => {
   }
 };
 
-export { initialState, reducer };
+export { initialState, reducer, defaultItem };

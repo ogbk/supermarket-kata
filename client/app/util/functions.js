@@ -19,11 +19,14 @@ const productExists = ({ products }: StoreType, productName: string) => (
 );
 
 const updateProductByName = (store: StoreType, newProduct: ItemType) => {
-  const oldIndex = getProductIndex(store, newProduct.name);
-  const newStore = { ...store };
+  const index = getProductIndex(store, newProduct.name);
+  const products = [...(store.products)];
+  products.splice(index, 1, newProduct);
 
-  newStore.splice(oldIndex, 1, newProduct);
-  return newStore;
+  return {
+    ...store,
+    'products': products,
+  };
 };
 
 export {

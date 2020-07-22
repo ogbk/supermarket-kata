@@ -5,6 +5,7 @@ import { getOnlyNumber } from '../util/functions';
 import type {
   DiscountType, ItemType, ProductsType, StoreType,
 } from '../util/datatypes';
+import { defaultItem } from '../util/reducer';
 
 type Props = {
   store: StoreType,
@@ -12,20 +13,59 @@ type Props = {
 }
 
 const Config = ({ store, dispatch }: Props) => {
-  const [pricingMethod, setPricingMethod] = useState('PRICE_PER_ITEM');
-  const [suffix, setSuffix] = useState('item');
-  const [price, setPrice] = useState(0);
-  const [name, setName] = useState('');
+  const { configNew, currentProduct } = store;
+  const defaultProduct = configNew ? defaultItem : currentProduct;
 
-  const [hasDiscount, setHasDiscount] = useState('true');
-  const [discountMethod, setDiscountMethod] = useState('DISCOUNT_PER_FRACTION');
+  const {
+    pricingMethod: _pricingMethod,
+    suffix: _suffix,
+    price: _price,
+    name: _name,
+    hasDiscount: _hasDiscount,
+    discountDetails: {
+      discountMethod: _discountMethod,
+      discountBuy: _discountBuy,
+      discountPay: _discountPay,
+    },
 
-  const [discountBuy, setDiscountBuy] = useState(1);
-  const [discountPay, setDiscountPay] = useState(1);
+  } = defaultProduct;
+
+  const [pricingMethod, setPricingMethod] = useState(_pricingMethod);
+  const [suffix, setSuffix] = useState(_suffix);
+  const [price, setPrice] = useState(_price);
+  const [name, setName] = useState(_name);
+
+  const [hasDiscount, setHasDiscount] = useState(_hasDiscount);
+  const [discountMethod, setDiscountMethod] = useState(_discountMethod);
+
+  const [discountBuy, setDiscountBuy] = useState(_discountBuy);
+  const [discountPay, setDiscountPay] = useState(_discountPay);
+
+  const handleSave = () => {
+    const product = {
+      ...defaultItem,
+      pricingMethod,
+      suffix,
+      price,
+      name,
+      hasDiscount,
+      discountDetails: {
+        ...(defaultItem.discountDetails),
+        discountMethod,
+        discountBuy,
+        discountPay,
+      },
+    };
+
+    dispatch({
+      type: (configNew ? 'SAVE_NEW' : 'SAVE_UPDATED'),
+      product,
+    });
+  };
 
   return (
     <div className="config">
-      <span className="title">CONFIG</span>
+      <span className="title">{configNew ? 'NEW PRODUCT' : 'UPDATE PRODUCT'}</span>
       <div className="content">
         <span>PRODUCT NAME:</span>
         <input
@@ -108,7 +148,7 @@ const Config = ({ store, dispatch }: Props) => {
           className="click button config-abort"
           onClick={() => {
             dispatch({
-              type: 'CLOSE_CONFIG',
+              type: 'ABORT_CONFIG',
             });
           }}
         > ABORT
@@ -117,11 +157,7 @@ const Config = ({ store, dispatch }: Props) => {
         <button
           type="button"
           className="click button config-save"
-          onClick={() => {
-            dispatch({
-              type: 'CLOSE_CONFIG',
-            });
-          }}
+          onClick={() => { handleSave(); }}
         > SAVE
         </button>
       </div>

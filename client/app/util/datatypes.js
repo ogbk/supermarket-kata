@@ -17,7 +17,7 @@ export type ItemType = {
   quantity: number,
   price: number,
   pricingMethod: 'PRICE_PER_ITEM' | 'PRICE_PER_WEIGHT',
-  hasDiscount: boolean,
+  hasDiscount: 'true' | 'false',
   discountDetails: DiscountType,
   fullPrice: number,
   actualPrice: number,
@@ -31,4 +31,6 @@ export type ItemType = {
 export type StoreType = {
   products: Array<ItemType>,
   configOpen: boolean,
+  configNew: boolean,
+  currentProduct: ItemType,
 };

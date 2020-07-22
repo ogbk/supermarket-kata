@@ -5,8 +5,8 @@ import { getOnlyNumber, updateProductByName, computeCart } from '../util/functio
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',
-  discountBuy: 1,
-  discountPay: 1,
+  discountBuy: 5,
+  discountPay: 2,
   discountQuantity: 0,
   reducedPrice: 0,
   remainingQuantity: 0,
@@ -16,7 +16,7 @@ const defaultDiscount: DiscountType = {
 const defaultItem: ItemType = {
   name: '',
   suffix: 'item',
-  quantity: 1,
+  quantity: 0,
   price: 1,
   pricingMethod: 'PRICE_PER_ITEM',
   hasDiscount: 'true',
@@ -26,7 +26,7 @@ const defaultItem: ItemType = {
   savings: 0,
   tempData: {
     addQuantity: 1,
-    deleteQuantity: 1,
+    deleteQuantity: 0,
   },
 };
 

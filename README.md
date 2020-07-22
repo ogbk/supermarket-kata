@@ -74,6 +74,7 @@
 - Block product addition & show error if product already exists.
 - Block ACTION: `DELETE quantity: (x)`, if x is more than quantity purchased.
 - When updating a product, user cannot update the name.
+- Product name is mandatory, block user from saving product is it's missing.
 
 ## Coding techniques / styles
 - In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`

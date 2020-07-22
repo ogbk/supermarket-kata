@@ -68,7 +68,7 @@ const Config = ({ store, dispatch }: Props) => {
     <div className="config">
       <span className="title">{configNew ? 'NEW PRODUCT' : 'UPDATE PRODUCT'}</span>
       <div className="content">
-        <span>PRODUCT NAME:</span>
+        <span className={name === '' ? 'required' : ''}>PRODUCT NAME:</span>
         <input
           type="text"
           value={name}
@@ -169,7 +169,9 @@ const Config = ({ store, dispatch }: Props) => {
           className={
             duplicate ? 'hide' : 'click button config-save'
           }
-          onClick={() => { handleSave(); }}
+          onClick={() => {
+            if (name !== '') { handleSave(); }
+          }}
         > SAVE
         </button>
       </div>

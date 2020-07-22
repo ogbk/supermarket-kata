@@ -50,6 +50,12 @@ const computeCart = (store: StoreType, products: Array<ItemType>, index: number)
   products[index].fullPrice = fullPrice;
 
   if (hasDiscount === 'false') {
+    products[index] = {
+      ...products[index],
+      'savings': 0,
+      'actualPrice': fullPrice,
+    };
+
     return {
       ...store,
       'products': products,
@@ -73,6 +79,8 @@ const computeCart = (store: StoreType, products: Array<ItemType>, index: number)
       remainingPrice,
       discountQuantity,
       reducedPrice,
+      actualPrice: (reducedPrice + remainingPrice),
+      savings: fullPrice - (reducedPrice + remainingPrice),
     },
   };
 

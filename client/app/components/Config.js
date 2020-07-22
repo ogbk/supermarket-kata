@@ -79,6 +79,7 @@ const Config = ({ store, dispatch }: Props) => {
         <span className={name === '' ? 'required' : ''}>PRODUCT NAME:</span>
         <input
           type="text"
+          name="product-name"
           value={name}
           className={
             duplicate ? 'input-error' : 'input-text config-field'
@@ -97,6 +98,7 @@ const Config = ({ store, dispatch }: Props) => {
         <select
           value={pricingMethod}
           className="select-custom click config-select config-field"
+          name="pricing-method"
           onChange={({ target: { value } }) => {
             setPricingMethod(value);
             setSuffix(
@@ -111,6 +113,7 @@ const Config = ({ store, dispatch }: Props) => {
         <input
           type="text"
           value={price}
+          name="price"
           className="input-text config-field"
           onChange={({ target: { value } }) => { setPrice(getOnlyNumber(value)); }}
         /><span>£/{suffix}</span>
@@ -120,6 +123,7 @@ const Config = ({ store, dispatch }: Props) => {
         <select
           value={hasDiscount}
           className="select-custom click config-select config-field"
+          name="discount-option"
           onChange={({ target: { value } }) => { setHasDiscount(value); }}
         >
           <option value="false">NO</option>
@@ -131,6 +135,7 @@ const Config = ({ store, dispatch }: Props) => {
             <span>DISCOUNT METHOD:</span>
             <select
               value={discountMethod}
+              name="discount-method"
               className="select-custom click config-select config-field"
               onChange={({ target: { value } }) => { setDiscountMethod(value); }}
             >
@@ -143,6 +148,7 @@ const Config = ({ store, dispatch }: Props) => {
             <input
               type="text"
               value={discountBuy}
+              name="discount-buy"
               className="input-text config-field"
               onChange={({ target: { value } }) => { setDiscountBuy(getOnlyNumber(value)); }}
             />
@@ -152,6 +158,7 @@ const Config = ({ store, dispatch }: Props) => {
             <input
               type="text"
               value={discountPay}
+              name="discount-pay"
               className="input-text config-field"
               onChange={({ target: { value } }) => { setDiscountPay(getOnlyNumber(value)); }}
             />

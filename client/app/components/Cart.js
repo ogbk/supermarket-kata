@@ -1,10 +1,8 @@
 // @flow
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { getOnlyNumber } from '../util/functions';
-import type {
-  DiscountType, ItemType, ProductsType, StoreType,
-} from '../util/datatypes';
+import type { StoreType } from '../util/datatypes';
 
 type Props = {
   store: StoreType,
@@ -12,7 +10,7 @@ type Props = {
 }
 
 const Cart = ({ store, dispatch }: Props) => {
-  const handleChange = (value: number, index: number, field: string) => {
+  const handleChange = (value: string, index: number, field: string) => {
     const newValue = getOnlyNumber(value);
     const newStore = JSON.parse(JSON.stringify(store));
     newStore.products[index].tempData[field] = newValue;
@@ -68,7 +66,7 @@ const Cart = ({ store, dispatch }: Props) => {
                       type="text"
                       className="input-text"
                       value={addQuantity}
-                      onChange={({ target: { value } }) => { handleChange(value, idx, 'addQuantity', addQuantity); }}
+                      onChange={({ target: { value } }) => { handleChange(value, idx, 'addQuantity'); }}
                     />
                     {suffix}
                   </div>
@@ -91,7 +89,7 @@ const Cart = ({ store, dispatch }: Props) => {
                         deleteQuantity > quantity ? 'input-error ' : 'input-text'
                       }
                       value={deleteQuantity}
-                      onChange={({ target: { value } }) => { handleChange(value, idx, 'deleteQuantity', deleteQuantity); }}
+                      onChange={({ target: { value } }) => { handleChange(value, idx, 'deleteQuantity'); }}
                     />
                     {suffix}
                   </div>

@@ -1,10 +1,8 @@
 // @flow
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { getOnlyNumber, productExists, discountValidity } from '../util/functions';
-import type {
-  DiscountType, ItemType, ProductsType, StoreType,
-} from '../util/datatypes';
+import type { StoreType } from '../util/datatypes';
 import { defaultItem } from '../util/reducer';
 
 type Props = {

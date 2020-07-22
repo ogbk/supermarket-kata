@@ -1,8 +1,7 @@
 // @flow
 
-import React, { useEffect, useState } from 'react';
-// import { computeTotal } from '../util/functions';
-// import type { CartType } from '../util/datatypes';
+import React from 'react';
+import type { StoreType } from '../util/datatypes';
 
 type Props = {
   store: StoreType,

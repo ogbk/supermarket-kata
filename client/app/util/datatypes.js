@@ -11,7 +11,6 @@ export type DiscountType = {
 }
 
 export type ItemType = {
-  id: string,
   name: string,
   suffix: string,
   quantity: number,

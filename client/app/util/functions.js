@@ -1,8 +1,8 @@
 // @flow
 
-import type { DiscountType, ItemType, ProductsType, StoreType } from './datatypes';
+import type { ItemType, StoreType } from './datatypes';
 
-const getOnlyNumber = (value) => (
+const getOnlyNumber = (value: string) => (
   Number(value.replace(/[^0-9+]/g, ''))
 );
 
@@ -30,7 +30,7 @@ const updateProductByName = (store: StoreType, newProduct: ItemType) => {
 };
 
 const discountValidity = (
-  dMethod, dBuy, dPay, normalPrice,
+  dMethod: string, dBuy: number, dPay: number, normalPrice: number,
 ) => {
   if (dMethod === 'DISCOUNT_PER_FRACTION') {
     return (dBuy > dPay);

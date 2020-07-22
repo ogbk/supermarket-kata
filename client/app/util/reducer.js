@@ -1,7 +1,7 @@
 // @flow
 
 import type { DiscountType, ItemType, StoreType } from './datatypes';
-import { getOnlyNumber, updateProductByName, computeCart } from '../util/functions';
+import { updateProductByName, computeCart } from './functions';
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',

@@ -1,11 +1,10 @@
 // @flow
 
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import Cart from './Cart';
 import Config from './Config';
 import Receipt from './Receipt';
 
-import type { DiscountType, ItemType, ProductsType } from '../util/datatypes';
 import { initialState, reducer } from '../util/reducer';
 import { findProductByName } from '../util/functions';
 

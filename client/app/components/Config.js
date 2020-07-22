@@ -48,7 +48,8 @@ const Config = ({ store, dispatch }: Props) => {
     _dMethod, _dBuy, _dPay, _normalPrice,
   ) => {
     const checkDiscountValidity = discountValidity(_dMethod, _dBuy, _dPay, _normalPrice);
-    if (!checkDiscountValidity) {
+
+    if (hasDiscount === 'true' && !checkDiscountValidity) {
       setDiscountInvalid(true);
     } else {
       const product = {

@@ -115,7 +115,7 @@ const Config = ({ store, dispatch }: Props) => {
           value={price}
           className="input-text config-field"
           onChange={({ target: { value } }) => { setPrice(getOnlyNumber(value)); }}
-        /><span>/{suffix}</span>
+        /><span>£/{suffix}</span>
         <br /><br /><br /><br />
 
         <span>DISCOUNT:</span>

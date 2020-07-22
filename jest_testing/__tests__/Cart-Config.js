@@ -71,7 +71,34 @@ describe('Create new product', () => {
 
   });
 
+  test('update product', () => {
+    const select_option = app.find('.app-config > select');
 
+    // CREATE
+    const PRODUCT_NAME = 'dummy1';
+    select_option.simulate('change', { target: { value:'' } });
+    app.find('button.execute-action').simulate('click');
 
+    app.find('input[name="product-name"]').simulate('change', {target: { value: PRODUCT_NAME }});
+    app.find('input[name="price"]').simulate('change', {target: {value: '10'}});
+    app.find('.config-save').simulate('click');
+
+    // UPDATE
+    select_option.simulate('change', { target: { value: PRODUCT_NAME } });
+    app.find('button.execute-action').simulate('click');
+  
+    expect(app.find('input[name="product-name"]').get(0).props.value).toBe(PRODUCT_NAME);
+    expect(app.find('input[name="price"]').get(0).props.value).toBe(Number('10')); // string to int conversion
+
+    app.find('input[name="price"]').simulate('change', {target: {value: '20'}});
+    app.find('.config-save').simulate('click');
+
+    // CHECK AGAIN
+    select_option.simulate('change', { target: { value: PRODUCT_NAME } });
+    app.find('button.execute-action').simulate('click');
+  
+    expect(app.find('input[name="product-name"]').get(0).props.value).toBe(PRODUCT_NAME);
+    expect(app.find('input[name="price"]').get(0).props.value).toBe(Number('20'));
+  });
 
 })

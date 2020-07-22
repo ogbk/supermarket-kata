@@ -42,6 +42,8 @@ const Config = ({ store, dispatch }: Props) => {
   const [discountBuy, setDiscountBuy] = useState(_discountBuy);
   const [discountPay, setDiscountPay] = useState(_discountPay);
 
+  //const [discountInvalid, setDiscountInvalid] = useState(false);
+
   const handleSave = () => {
     const product = {
       ...defaultItem,
@@ -136,7 +138,7 @@ const Config = ({ store, dispatch }: Props) => {
               type="text"
               value={discountBuy}
               className="input-text config-field"
-              onChange={({ target: { value } }) => { setDiscountBuy(value); }}
+              onChange={({ target: { value } }) => { setDiscountBuy(getOnlyNumber(value)); }}
             />
             {suffix === 'gr' && suffix}<br /><br />
 
@@ -145,7 +147,7 @@ const Config = ({ store, dispatch }: Props) => {
               type="text"
               value={discountPay}
               className="input-text config-field"
-              onChange={({ target: { value } }) => { setDiscountPay(value); }}
+              onChange={({ target: { value } }) => { setDiscountPay(getOnlyNumber(value)); }}
             />
             {discountMethod === 'DISCOUNT_PER_QUANTITY' ? '£' : 'item(s)'}
           </div>

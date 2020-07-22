@@ -73,14 +73,14 @@ const computeCart = (store: StoreType, products: Array<ItemType>, index: number)
 
   products[index] = {
     ...products[index],
+    actualPrice: (reducedPrice + remainingPrice),
+    savings: fullPrice - (reducedPrice + remainingPrice),
     'discountDetails': {
       ...(products[index].discountDetails),
       remainingQuantity,
       remainingPrice,
       discountQuantity,
       reducedPrice,
-      actualPrice: (reducedPrice + remainingPrice),
-      savings: fullPrice - (reducedPrice + remainingPrice),
     },
   };
 

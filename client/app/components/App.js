@@ -44,8 +44,8 @@ const App = () => {
         >
           <option value="">CREATE NEW ITEM</option>
           {
-            products.map(({ name }) => (
-              <option value={name}>UPDATE: {name}</option>
+            products.map(({ name }, idx) => (
+              <option key={idx} value={name}>UPDATE: {name}</option>
             ))
           }
         </select>

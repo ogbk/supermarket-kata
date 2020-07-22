@@ -41,6 +41,14 @@ body
   margin-left: .2em
   width: 4em
 
+.input-error
+  border: 0
+  border-bottom: .1px solid $red
+  color: $blue
+  font-family: monospace, Lucinda Console, sans-serif, Courier New
+  margin-left: .2em
+  width: 4em
+
 .select-custom
   border: 0
   border-bottom: 1px solid $black
@@ -48,6 +56,12 @@ body
   font-family: monospace, Lucinda Console, sans-serif, Courier New
   margin-bottom: 1.5em
   margin-left: .4em
+
+.error
+  color: $red
+  font-family: monospace, Lucinda Console, sans-serif, Courier New
+  font-size: .8em
+
 
 
 .app
@@ -68,7 +82,9 @@ body
         color: $brown
 
       .content
+        min-width: max-content
         margin-top: 1.8em
+        width: 100%
 
         .cart-item
           margin-bottom: 2em
@@ -79,7 +95,7 @@ body
 
             div
               flex-grow: 1
-              max-width: 11em
+              max-width: 12em
 
               .button-add
                 color: $blue

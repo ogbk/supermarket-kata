@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useEffect, useState } from 'react';
-import { getOnlyNumber } from '../util/functions';
+import { getOnlyNumber, productExists } from '../util/functions';
 import type {
   DiscountType, ItemType, ProductsType, StoreType,
 } from '../util/datatypes';
@@ -34,6 +34,7 @@ const Config = ({ store, dispatch }: Props) => {
   const [suffix, setSuffix] = useState(_suffix);
   const [price, setPrice] = useState(_price);
   const [name, setName] = useState(_name);
+  const [duplicate, setDuplicate] = useState(false);
 
   const [hasDiscount, setHasDiscount] = useState(_hasDiscount);
   const [discountMethod, setDiscountMethod] = useState(_discountMethod);
@@ -71,9 +72,18 @@ const Config = ({ store, dispatch }: Props) => {
         <input
           type="text"
           value={name}
-          className="input-text config-field"
-          onChange={({ target: { value } }) => { setName(value); }}
-        /><br /><br />
+          className={
+            duplicate ? 'input-error' : 'input-text config-field'
+          }
+          readOnly={!configNew}
+          onChange={({ target: { value } }) => {
+            const exists = productExists(store, value);
+            setName(value);
+            setDuplicate(exists);
+          }}
+        />
+        { duplicate && <span className="error">[Product already exists]</span> }
+        <br /><br />
 
         <span>PRICING METHOD:</span>
         <select
@@ -156,7 +166,9 @@ const Config = ({ store, dispatch }: Props) => {
 
         <button
           type="button"
-          className="click button config-save"
+          className={
+            duplicate ? 'hide' : 'click button config-save'
+          }
           onClick={() => { handleSave(); }}
         > SAVE
         </button>

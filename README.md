@@ -56,8 +56,7 @@
 
 ## Data structure
 - Besides the data format shown on the components, the following data is used in the state management:
-  - `productId`- item code for each product 
-  - `products[productId]`:
+  - `products[index]`:
       - Product info saved in `<Config/>` 
       - `quantity` - [number or weight]
       - `fullPrice`: price for `quantity` without any discount
@@ -71,6 +70,9 @@
  
 ## Business considerations
 - Weight is shown in gr (grams not kilograms) everywhere except in receipt. This way users won't have to do much conversions.
+- The name property `product[index].name` is used as an identifier of a product
+- Block product addition & show error if product already exists.
+- When updating a product, user cannot update the name.
 
 ## Coding techniques / styles
 - In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`

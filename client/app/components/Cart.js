@@ -12,14 +12,13 @@ type Props = {
 }
 
 const Cart = ({ store, dispatch }: Props) => {
-
   const handleChange = (value: number, index: number, field: string) => {
     const newValue = getOnlyNumber(value);
     const newStore = JSON.parse(JSON.stringify(store));
     newStore.products[index].tempData[field] = newValue;
 
     dispatch({
-      type: 'REPLACE_PRODUCTS',
+      type: 'SET_PRODUCTS',
       products: newStore.products,
     });
   };
@@ -36,8 +35,9 @@ const Cart = ({ store, dispatch }: Props) => {
     }
 
     dispatch({
-      type: 'REPLACE_PRODUCTS',
+      type: 'SET_PRODUCTS_CART',
       products: newProds,
+      productIndex: index,
     });
   };
 

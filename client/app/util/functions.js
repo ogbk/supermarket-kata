@@ -38,6 +38,50 @@ const discountValidity = (
   return ((dPay / dBuy) < normalPrice);
 };
 
+const computeCart = (store: StoreType, products: Array<ItemType>, index: number) => {
+  const thisProduct = products[index];
+
+  const {
+    price, quantity, hasDiscount,
+    discountDetails: { discountMethod, discountBuy, discountPay },
+  } = thisProduct;
+
+  const fullPrice = price * quantity;
+  products[index].fullPrice = fullPrice;
+
+  if (hasDiscount === 'false') {
+    return {
+      ...store,
+      'products': products,
+    };
+  }
+
+  const remainingQuantity = quantity % discountBuy;
+  const remainingPrice = remainingQuantity * price;
+  const discountQuantity = quantity - remainingQuantity;
+  let reducedPrice = ((discountQuantity * discountPay) / discountBuy);
+
+  if (discountMethod === 'DISCOUNT_PER_FRACTION') {
+    reducedPrice *= price;
+  }
+
+  products[index] = {
+    ...products[index],
+    'discountDetails': {
+      ...(products[index].discountDetails),
+      remainingQuantity,
+      remainingPrice,
+      discountQuantity,
+      reducedPrice,
+    },
+  };
+
+  return {
+    ...store,
+    'products': products,
+  };
+};
+
 export {
   getOnlyNumber,
   findProductByName,
@@ -45,4 +89,5 @@ export {
   productExists,
   updateProductByName,
   discountValidity,
+  computeCart,
 };

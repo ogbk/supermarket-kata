@@ -1,7 +1,7 @@
 // @flow
 
 import type { DiscountType, ItemType, StoreType } from './datatypes';
-import { getOnlyNumber, updateProductByName } from '../util/functions';
+import { getOnlyNumber, updateProductByName, computeCart } from '../util/functions';
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',
@@ -83,11 +83,14 @@ const reducer = (state: StoreType, action: any) => {
       };
     }
 
-    case 'REPLACE_PRODUCTS': {
+    case 'SET_PRODUCTS': {
       return {
         ...state,
         'products': action.products,
       };
+    }
+    case 'SET_PRODUCTS_CART': {
+      return computeCart(state, action.products, action.productIndex);
     }
 
     default: {

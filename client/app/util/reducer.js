@@ -2,7 +2,6 @@
 
 import type { DiscountType, ItemType, StoreType } from './datatypes';
 import { getOnlyNumber, updateProductByName } from '../util/functions';
-import { getItemCartIndexById, findProduct, updateCartQuantity } from './reducerHelper';
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',
@@ -15,9 +14,8 @@ const defaultDiscount: DiscountType = {
 };
 
 const defaultItem: ItemType = {
-  id: '',
   name: '',
-  suffix: '',
+  suffix: 'item',
   quantity: 1,
   price: 1,
   pricingMethod: 'PRICE_PER_ITEM',

@@ -29,10 +29,20 @@ const updateProductByName = (store: StoreType, newProduct: ItemType) => {
   };
 };
 
+const discountValidity = (
+  dMethod, dBuy, dPay, normalPrice,
+) => {
+  if (dMethod === 'DISCOUNT_PER_FRACTION') {
+    return (dBuy > dPay);
+  }
+  return ((dPay / dBuy) < normalPrice);
+};
+
 export {
   getOnlyNumber,
   findProductByName,
   getProductIndex,
   productExists,
   updateProductByName,
+  discountValidity,
 };

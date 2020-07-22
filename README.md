@@ -76,6 +76,10 @@
 - When updating a product, user cannot update the name.
 - Product name is mandatory, block user from saving product is it's missing.
 
+- Deternine when a discount is beneficial (valid) or not: - function `discountValidity()`:
+  - If discount type is `buy quantity A pay for quantity b` then `b must be less than a`
+  - If discount type is `buy quantity A (weight | items) pay £b` then compared to the normal price (its items are also in the same measurement [weight | items]) then the higher the fraction `A/b` the better.
+
 ## Coding techniques / styles
 - In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`
 

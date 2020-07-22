@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useEffect, useState } from 'react';
-import { getOnlyNumber, productExists } from '../util/functions';
+import { getOnlyNumber, productExists, discountValidity } from '../util/functions';
 import type {
   DiscountType, ItemType, ProductsType, StoreType,
 } from '../util/datatypes';
@@ -42,28 +42,35 @@ const Config = ({ store, dispatch }: Props) => {
   const [discountBuy, setDiscountBuy] = useState(_discountBuy);
   const [discountPay, setDiscountPay] = useState(_discountPay);
 
-  //const [discountInvalid, setDiscountInvalid] = useState(false);
+  const [discountInvalid, setDiscountInvalid] = useState(false);
 
-  const handleSave = () => {
-    const product = {
-      ...defaultItem,
-      pricingMethod,
-      suffix,
-      price,
-      name,
-      hasDiscount,
-      discountDetails: {
-        ...(defaultItem.discountDetails),
-        discountMethod,
-        discountBuy,
-        discountPay,
-      },
-    };
+  const handleSave = (
+    _dMethod, _dBuy, _dPay, _normalPrice,
+  ) => {
+    const checkDiscountValidity = discountValidity(_dMethod, _dBuy, _dPay, _normalPrice);
+    if (!checkDiscountValidity) {
+      setDiscountInvalid(true);
+    } else {
+      const product = {
+        ...defaultItem,
+        pricingMethod,
+        suffix,
+        price,
+        name,
+        hasDiscount,
+        discountDetails: {
+          ...(defaultItem.discountDetails),
+          discountMethod,
+          discountBuy,
+          discountPay,
+        },
+      };
 
-    dispatch({
-      type: (configNew ? 'SAVE_NEW' : 'SAVE_UPDATED'),
-      product,
-    });
+      dispatch({
+        type: (configNew ? 'SAVE_NEW' : 'SAVE_UPDATED'),
+        product,
+      });
+    }
   };
 
   return (
@@ -172,10 +179,13 @@ const Config = ({ store, dispatch }: Props) => {
             duplicate ? 'hide' : 'click button config-save'
           }
           onClick={() => {
-            if (name !== '') { handleSave(); }
+            if (name !== '') {
+              handleSave(discountMethod, discountBuy, discountPay, price);
+            }
           }}
         > SAVE
         </button>
+        {discountInvalid && <span className="error">[DISCOUNT INVALID - USER WOULD NOT PAY LESS]</span>}
       </div>
     </div>
   );

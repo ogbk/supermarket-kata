@@ -148,7 +148,7 @@ const Config = ({ store, dispatch }: Props) => {
               className="input-text config-field"
               onChange={({ target: { value } }) => { setDiscountBuy(getOnlyNumber(value)); }}
             />
-            {suffix === 'gr' && suffix}<br /><br />
+            {suffix}<br /><br />
 
             <span>DISCOUNT PAY:</span>
             <input
@@ -157,7 +157,7 @@ const Config = ({ store, dispatch }: Props) => {
               className="input-text config-field"
               onChange={({ target: { value } }) => { setDiscountPay(getOnlyNumber(value)); }}
             />
-            {discountMethod === 'DISCOUNT_PER_QUANTITY' ? '£' : 'item(s)'}
+            {discountMethod === 'DISCOUNT_PER_QUANTITY' ? '£' : suffix}
           </div>
         )}
       </div>

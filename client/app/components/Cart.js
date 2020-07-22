@@ -74,14 +74,22 @@ const Cart = ({ store, dispatch }: Props) => {
                   </div>
                   <div>
                     <button
-                      className="button-delete button click"
+                      className={
+                        deleteQuantity > quantity ? 'button-delete button ' : 'button-delete button click'
+                      }
                       type="button"
-                      onClick={() => { executeChange(idx, 'deleteQuantity', false); }}
+                      onClick={() => {
+                        if (deleteQuantity <= quantity) {
+                          executeChange(idx, 'deleteQuantity', false);
+                        }
+                      }}
                     >DELETE
                     </button>
                     <input
                       type="text"
-                      className="input-text"
+                      className={
+                        deleteQuantity > quantity ? 'input-error ' : 'input-text'
+                      }
                       value={deleteQuantity}
                       onChange={({ target: { value } }) => { handleChange(value, idx, 'deleteQuantity', deleteQuantity); }}
                     />

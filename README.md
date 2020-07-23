@@ -80,10 +80,25 @@
   - If discount type is `buy quantity A pay for quantity b` then `b must be less than a`
   - If discount type is `buy quantity A (weight | items) pay £b` then compared to the normal price (its items are also in the same measurement [weight | items]) then the higher the fraction `A/b` the better.
 
+- In calculating the receipt, the decimal values are rounded up to 2 digits, style `floor` not `ceil`.
+  - `12.2345` => `12.23`
+  - `1234.5678` => `1234.56`
+  This way user won't pay a single penny in excess.
+
+
 ## Coding techniques / styles
 - In `<Config/>` when saving/ changing discount value from `<select/>`, the option values are  strings `'true'` | `'false'`, not booleans. This is deliberate as the discount details are shown only if `(hasDiscount === 'true')`, not `(hasDiscount)`
 
 - `products.data.tempData = {addQuantity, deleteQuantity}`: fields used in the state management to store added, deleted quantity in `<Cart/>`, related to a particular product.
+
+- When inserting numbers input fields:
+  - for security reasons, inserting anything not a number resets the field to 0 => 
+    - `[ '123' => 123 ]`, `[ '12s' => 0 ]`
+  
+  - when inserting a fraction:
+    - please type the full number and add the `.` later
+      - `value: 123.45`, 
+        - type `12345`, then move back and add `.` => `123.45`
 
 ## Running
 

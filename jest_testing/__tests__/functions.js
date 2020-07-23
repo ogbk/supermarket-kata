@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { computeCart } from '../../client/app/util/functions';
+import { computeCart, rounded_two } from '../../client/app/util/functions';
 
 describe('computeCart', () => {
 
@@ -64,3 +64,15 @@ describe('computeCart', () => {
 
 })
 
+describe('rounded_two()', () => {
+
+  test('rounding fraction up to 2 decimals', () => {
+    const wholeNumber = 1234;
+    const fraction1 = 1234.1234;
+    const fraction2 = 1234.5678;
+    
+    expect(rounded_two(wholeNumber)).toEqual(1234);
+    expect(rounded_two(fraction1)).toEqual(1234.12);
+    expect(rounded_two(fraction2)).toEqual(1234.56);
+  })
+})

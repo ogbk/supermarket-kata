@@ -3,7 +3,7 @@
 import type { ItemType, StoreType } from './datatypes';
 
 const getOnlyNumber = (value: string) => (
-  Number(value.replace(/[^0-9+]/g, ''))
+  Number(value) || 0
 );
 
 const findProductByName = ({ products }: StoreType, productName: string) => (
@@ -17,6 +17,14 @@ const getProductIndex = ({ products }: StoreType, productName: string) => (
 const productExists = ({ products }: StoreType, productName: string) => (
   products.some(({ name }) => (name === productName))
 );
+
+const rounded_two = (x: number) => {
+  const fraction = (x - Math.trunc(x)) * 10;
+  const rounded = (Math.trunc(fraction * 10));
+  const ris = `${Math.trunc(x)}.${rounded}`;
+
+  return (Number(ris));
+};
 
 const updateProductByName = (store: StoreType, newProduct: ItemType) => {
   const index = getProductIndex(store, newProduct.name);
@@ -98,4 +106,5 @@ export {
   updateProductByName,
   discountValidity,
   computeCart,
+  rounded_two,
 };

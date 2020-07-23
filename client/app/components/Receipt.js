@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { rounded_two } from '../util/functions';
 import type { StoreType } from '../util/datatypes';
 
 type Props = {
@@ -23,11 +24,11 @@ const Receipt = ({ store }: Props) => {
   totalToPay = subTotal - totalSavings;
 
   const value = `
-  Subtotal -------- ${subTotal}
+  Subtotal -------- ${rounded_two(subTotal)}
 
-  Total savings --- ${totalSavings}
+  Total savings --- ${rounded_two(totalSavings)}
 
-  Total to pay ---- ${totalToPay}
+  Total to pay ---- ${rounded_two(totalToPay)}
   `;
 
   return (

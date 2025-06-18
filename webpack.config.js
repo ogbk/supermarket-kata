@@ -9,8 +9,12 @@ module.exports = {
     path: `${__dirname}/client/public`,
     filename: 'bundle.js',
   },
+  mode: 'development',
   devServer: {
-    contentBase: `${__dirname}/client/public`,
+    static: {
+      directory: `${__dirname}/client/public`,
+    },
+    compress: true,
     port: CLIENT_PORT,
   },
   module: {
@@ -22,4 +26,3 @@ module.exports = {
     ],
   },
 };
-

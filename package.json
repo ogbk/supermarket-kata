@@ -4,9 +4,8 @@
    "description": "Supermarket Kata",
    "main": "index.js",
    "scripts": {
-      "start": "webpack-dev-server --hot --open",
-      "client:dev": "webpack-dev-server --hot --open",
-      "client:prod": "webpack",
+      "dev": "webpack-dev-server --hot --open",
+      "prod": "webpack",
       "sass-lint": "sass-lint client/app/sass/styles.sass --verbose -q",
       "eslint": "eslint client/app/",
       "flow": "flow",

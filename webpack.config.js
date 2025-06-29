@@ -4,7 +4,7 @@ const { CLIENT_PORT } = require('./port_config');
 require('dotenv').config();
 
 module.exports = {
-  entry: `${__dirname}/client/app/components/index.js`,
+  entry: `${__dirname}/client/app/components/index.tsx`,
   output: {
     path: `${__dirname}/client/public`,
     filename: 'bundle.js',

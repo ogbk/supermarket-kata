@@ -1,10 +1,10 @@
 import React, { useState, useReducer } from 'react';
-import Cart from './Cart';
-import Config from './Config';
-import Receipt from './Receipt';
+import Cart from './Cart.tsx';
+import Config from './Config.tsx';
+import Receipt from './Receipt.tsx';
 
-import { initialState, reducer } from '../util/reducer';
-import { findProductByName } from '../util/functions';
+import { initialState, reducer } from '../util/reducer.ts';
+import { findProductByName } from '../util/functions.ts';
 
 const App = () => {
   const [store, dispatch] = useReducer(reducer, initialState);

@@ -1,4 +1,4 @@
-import type { ItemType, StoreType } from './datatypes';
+import type { ItemType, StoreType } from './datatypes.ts';
 
 const getOnlyNumber = (value: string) => (
   Number(value) || 0

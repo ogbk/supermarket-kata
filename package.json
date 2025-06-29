@@ -2,7 +2,7 @@
    "name": "supermarket-kata",
    "version": "1.0.0",
    "description": "Supermarket Kata",
-   "main": "index.js",
+   "main": "index.tsx",
    "scripts": {
       "dev": "webpack-dev-server --hot --open",
       "prod": "webpack",

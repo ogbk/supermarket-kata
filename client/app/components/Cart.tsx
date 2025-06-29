@@ -1,6 +1,6 @@
 import React from 'react';
-import { getOnlyNumber } from '../util/functions';
-import type { StoreType } from '../util/datatypes';
+import { getOnlyNumber } from '../util/functions.ts';
+import type { StoreType } from '../util/datatypes.ts';
 
 type Props = {
   store: StoreType,

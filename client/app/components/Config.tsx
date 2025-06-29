@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { getOnlyNumber, productExists, discountValidity } from '../util/functions';
-import type { StoreType } from '../util/datatypes';
-import { defaultItem } from '../util/reducer';
+import { getOnlyNumber, productExists, discountValidity } from '../util/functions.ts';
+import type { StoreType } from '../util/datatypes.ts';
+import { defaultItem } from '../util/reducer.ts';
 
 type Props = {
   store: StoreType,

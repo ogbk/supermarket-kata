@@ -1,5 +1,5 @@
-import type { DiscountType, ItemType, StoreType } from './datatypes';
-import { updateProductByName, computeCart } from './functions';
+import type { DiscountType, ItemType, StoreType } from './datatypes.ts';
+import { updateProductByName, computeCart } from './functions.ts';
 
 const defaultDiscount: DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION',

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import { getOnlyNumber } from '../util/functions';
 import type { StoreType } from '../util/datatypes';

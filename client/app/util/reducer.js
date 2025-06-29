@@ -1,5 +1,3 @@
-// @flow
-
 import type { DiscountType, ItemType, StoreType } from './datatypes';
 import { updateProductByName, computeCart } from './functions';
 

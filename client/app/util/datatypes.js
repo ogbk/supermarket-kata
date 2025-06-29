@@ -1,5 +1,3 @@
-// @flow
-
 export type DiscountType = {
   discountMethod: 'DISCOUNT_PER_FRACTION' | 'DISCOUNT_PER_QUANTITY',
   discountBuy: number,

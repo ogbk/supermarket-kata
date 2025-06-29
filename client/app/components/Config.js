@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState } from 'react';
 import { getOnlyNumber, productExists, discountValidity } from '../util/functions';
 import type { StoreType } from '../util/datatypes';

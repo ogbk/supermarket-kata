@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState, useReducer } from 'react';
 import Cart from './Cart';
 import Config from './Config';

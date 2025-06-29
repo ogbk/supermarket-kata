@@ -1,5 +1,3 @@
-// @flow
-
 import type { ItemType, StoreType } from './datatypes';
 
 const getOnlyNumber = (value: string) => (

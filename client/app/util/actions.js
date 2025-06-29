@@ -1,5 +1,3 @@
-// @flow
-
 const openProductsList = {
   type: 'SET_PAGE',
   page: 'PRODUCTS_LIST',

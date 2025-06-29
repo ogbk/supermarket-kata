@@ -8,7 +8,6 @@
       "prod": "webpack",
       "sass-lint": "sass-lint client/app/sass/styles.sass --verbose -q",
       "eslint": "eslint client/app/",
-      "flow": "flow",
       "test": "jest"
    },
    "author": "",
@@ -21,6 +20,7 @@
       "@babel/polyfill": "7.6.0",
       "@babel/preset-env": "7.6.3",
       "@babel/preset-react": "7.6.3",
+      "@babel/preset-typescript": "7.27.1",
       "@babel/runtime": "7.27.6",
       "ajv": "6.12.6",
       "babel-loader": "8.0.6",
@@ -47,7 +47,6 @@
    },
    "devDependencies": {
       "@babel/cli": "7.27.2",
-      "@babel/preset-flow": "7.0.0",
       "babel-eslint": "10.1.0",
       "babel-jest": "24.9.0",
       "enzyme": "3.11.0",
@@ -59,7 +58,6 @@
       "eslint-plugin-react": "7.16.0",
       "eslint-plugin-react-hooks": "1.7.0",
       "eslint-watch": "6.0.1",
-      "flow-bin": "0.109.0",
       "jest": "24.9.0",
       "jest-cli": "24.9.0",
       "sass-lint": "1.12.1"
